@@ -1,1 +1,17 @@
+name: "custom action"
+description: "Runs tfsec and outputs any failures"
 
+inputs:
+  FW_ADMIN_TOKEN :
+    description: |
+      GitHub token used for making authenticated requests to the GitHub API,
+      which helps avoid rate limiting
+    required: false
+  test_path_name :
+    description: "test path name"
+outputs:
+  package-id:
+    description: "package id"
+runs:
+  using: "docker"
+  image: "Dockerfile"

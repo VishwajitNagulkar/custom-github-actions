@@ -1,0 +1,19 @@
+# name: test
+# on:
+#   pull_request:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   tests:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Get package name
+#         id: get-package-name
+#         run: |
+#           PACKAGE_ID=$(gh api /orgs/chamberlaingroupfirmware/packages/container/${{ steps.test-path.outputs.name }}/versions --jq '.[] | select(.metadata.container.tags[] == "${{ steps.test-path.outputs.sha }}") | .id')
+#           [ -z "$PACKAGE_ID" ] && echo "Package ID not found" && exit 1 || echo "Package name found: $PACKAGE_ID"
+#           echo "package-id=$PACKAGE_ID" >> $GITHUB_OUTPUT
+#         env:
+#           GH_TOKEN: ${{ secrets.FW_ADMIN_TOKEN }}
